@@ -1,7 +1,6 @@
 package pds.label;
 
-import java.io.*;
-import java.util.*;
+import java.io.PrintStream;
 
 /**
  * PDSValue is a class that contains a value which can be associated
@@ -93,7 +92,9 @@ public class PDSValue {
 			break;
 		}
 		// out.print(mValue);
-		buffer = wrapPad(mValue, offset, indentLength, maxLength);
+		if(isQuoted()) buffer = mValue;
+		else buffer = wrapPad(mValue, offset, indentLength, maxLength);
+		
 		out.print(buffer);
 		switch(mType) {
 			case TYPE_STRING:
@@ -107,6 +108,50 @@ public class PDSValue {
 		if(mUnits.length() > 0) {
 			out.print(" <" + mUnits + ">");
 		}
+	}
+	
+    /** 
+     * Format the value and return a string containing it.
+     *
+     * @return		a String contining a formatted representation of the value.
+     *
+     * @since           1.0
+     */
+	public String formatValue() {
+		return formatValue(false);
+	}
+	
+    /** 
+     * Format the value and return a string containing it.
+     *
+     * @param plain		flag indicating if the value is not to be adorned
+ 	 *                  with appropriate quotation marks.
+ 	 *
+	 * @return		a String contining a formatted representation of the value.
+     *
+     * @since           1.0
+     */
+	public String formatValue(boolean plain) {
+		String	buffer = "";
+		
+		buffer = mValue;
+		
+		if(!plain) {
+			switch(mType) {
+				case TYPE_STRING:
+					buffer = "\"" + buffer + "\"";
+				break;
+				case TYPE_LITERAL:
+					buffer = "'" + buffer + "'";
+				break;
+			}
+		}
+			
+		if(mUnits.length() > 0) {
+			buffer += " <" + mUnits + ">";
+		}
+		
+		return buffer;
 	}
 
     /** 
@@ -188,6 +233,31 @@ public class PDSValue {
 		}
 		
 		return result;
+	}
+	
+    /** 
+     * Dump all information about an element.
+ 	 * 
+     * @param out    	the stream to print the element to.
+     *
+     * @since           1.0
+     */
+	public void dump(PrintStream out) {
+		out.print("Type: ");
+		switch(mType) {
+		case TYPE_LITERAL:
+			 out.println("LITERAL");
+			 break;
+		case TYPE_STRING:
+			 out.println("STRING");
+			 break;
+		case TYPE_NONE:
+			 out.println("NONE");
+			 break;
+		}
+			 
+		out.println("Value: " + mValue);
+		out.println("Units: " + mUnits);
 	}
 } 
  

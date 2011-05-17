@@ -8,22 +8,6 @@
 		<project>
 			<label>pdslabel</label>
 			<showfiles>false</showfiles>
-			<folderitem>
-				<path>..\src\doc</path>
-				<dir>doc</dir>
-			</folderitem>
-			<folderitem>
-				<path>..\src\doc\pds</path>
-				<dir>doc\pds</dir>
-			</folderitem>
-			<folderitem>
-				<path>..\src\doc\pds\label</path>
-				<dir>doc\pds\label</dir>
-			</folderitem>
-			<folderitem>
-				<path>..\src\example</path>
-				<dir>example</dir>
-			</folderitem>
 		</project>
 	</projects>
 	<open_files>
@@ -37,7 +21,7 @@
 			<path>..\src\PDSElement.java</path>
 			<source>true</source>
 			<index>1</index>
-			<active>false</active>
+			<active>true</active>
 		</docitem>
 		<docitem>
 			<path>..\src\PDSItem.java</path>
@@ -55,7 +39,7 @@
 			<path>..\src\PDSLabel.java</path>
 			<source>true</source>
 			<index>4</index>
-			<active>true</active>
+			<active>false</active>
 		</docitem>
 	</open_files>
 </workspace_user>

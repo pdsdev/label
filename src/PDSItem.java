@@ -31,7 +31,21 @@ public class PDSItem {
      *
      * @since           1.0
      */
-	public boolean valid() {
+	public boolean valid() 
+	{ 
+		return isValid(); 
+	}
+	
+    /** 
+     * Determines if a PDSItem is valid. A valid PDSItem is set to 
+     * point to a range of elements within a {@link PDSLabel}.
+	 * 
+     * @return          <code>true</code> if a range is set.
+     *					<code>false</code> is no range is set.
+     *
+     * @since           1.0
+     */
+	public boolean isValid() {
 		if(mStart == -1) return false;
 		if(mEnd == -1) return false;
 		return true;

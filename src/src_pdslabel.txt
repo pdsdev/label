@@ -1,5 +1,5 @@
-C:\Projects\pds\java\pdslabel\src\PDSElement.java
-C:\Projects\pds\java\pdslabel\src\PDSItem.java
-C:\Projects\pds\java\pdslabel\src\PDSLabel.java
-C:\Projects\pds\java\pdslabel\src\PDSUtil.java
-C:\Projects\pds\java\pdslabel\src\PDSValue.java
+C:\Projects\pds\java\label\src\PDSElement.java
+C:\Projects\pds\java\label\src\PDSItem.java
+C:\Projects\pds\java\label\src\PDSLabel.java
+C:\Projects\pds\java\label\src\PDSUtil.java
+C:\Projects\pds\java\label\src\PDSValue.java
