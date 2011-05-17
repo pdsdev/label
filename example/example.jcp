@@ -1,0 +1,23 @@
+! ** JCreator Project File (C)2000
+! ********** DO NOT EDIT *********
+
+VERSION := "1.10"
+LABEL := "example"
+JDKPROFILE := ""
+ACTIVE := "1"
+OUTPUTPATH := "..\\\\example"
+COMPILER := ""
+
+! Start RunTime Configuration Structure
+#[BeginRunTime]LABEL := "<Default>" RUNAPPLIC := "" RUNAPPLET := "" PARAM := "" RUN := "Example" CHECK := "11" #[EndRunTime]
+#[BeginRunTime]LABEL := "Test with 99173.LBL" RUNAPPLIC := "<Default>" RUNAPPLET := "<Default>" RUNDEBUG := "<Default>" PARAM := "99173.LBL" RUN := "Example" CHECK := "0" #[EndRunTime]
+
+! Start Required Libraries Structure
+
+! Start Project Folder Structure
+#[BeginFolder]
+LABEL := "Root"
+FILTER := ""
+
+#[BeginFile]SOURCE := "\\example.java" #[EndFile]
+#[EndFolder]

@@ -1,0 +1,349 @@
+OBJECT                         = COLUMN                                       
+  NAME                          = "SAMPLE UTC"                                
+  COLUMN_NUMBER                 = 1                                           
+  DATA_TYPE                     = CHARACTER                                   
+  PPI_TIME_FORMAT               = "  %YEAR% %DOY% %HR% %MIN% %SEC% %MSEC%"    
+  START_BYTE                    = 1                                           
+  BYTES                         = 23                                          
+  UNIT                          = "N/A"                                       
+  DESCRIPTION                   = "Universal time of the sample at the        
+        spacecraft. The time appears as 6 integer columns (year, day of       
+        year, hour, minute, seconds, millisecond). Individual elements of     
+        the time column are separated by a single ASCII space character       
+        and have leading zeros omitted. The individual elements can be        
+        read by using the FORTRAN format '(2X,I4,1X,I3,3(1X,I2),1X,I3)'       
+        IYR IDOY IHR IMIN ISEC IMSEC"                                         
+END_OBJECT                     = COLUMN                                       
+OBJECT                         = COLUMN                                       
+  NAME                          = "Decimal Day"                               
+  COLUMN_NUMBER                 = 2                                           
+  DATA_TYPE                     = "ASCII REAL"                                
+  START_BYTE                    = 25                                          
+  BYTES                         = 13                                          
+  FORMAT                        = "F13.9"                                     
+  UNIT                          = "DAYS"                                      
+  DESCRIPTION                   = "Decimal day of 1998. This column           
+        provides a second representation of the sample time."                 
+END_OBJECT                     = COLUMN                                       
+OBJECT                         = COLUMN                                       
+  NAME                          = "Bx"                                        
+  COLUMN_NUMBER                 = 3                                           
+  DATA_TYPE                     = "ASCII REAL"                                
+  START_BYTE                    = 41                                          
+  BYTES                         = 8                                           
+  FORMAT                        = "F8.3"                                      
+  UNIT                          = "nT"                                        
+  DESCRIPTION                   = "                                           
+        Sampled value of the magnetic field X component (Planetocentric       
+        coordinates) measured in units of nanotesla."                         
+END_OBJECT                     = COLUMN                                       
+OBJECT                         = COLUMN                                       
+  NAME                          = "By"                                        
+  COLUMN_NUMBER                 = 4                                           
+  DATA_TYPE                     = "ASCII REAL"                                
+  START_BYTE                    = 51                                          
+  BYTES                         = 8                                           
+  FORMAT                        = "F8.3"                                      
+  UNIT                          = "nT"                                        
+  DESCRIPTION                   = "                                           
+        Sampled value of the magnetic field Y component (Planetocentric       
+        coordinates) measured in units of nanotesla."                         
+END_OBJECT                     = COLUMN                                       
+OBJECT                         = COLUMN                                       
+  NAME                          = "Bz"                                        
+  COLUMN_NUMBER                 = 5                                           
+  DATA_TYPE                     = "ASCII REAL"                                
+  START_BYTE                    = 61                                          
+  BYTES                         = 8                                           
+  FORMAT                        = "F8.3"                                      
+  UNIT                          = "nT"                                        
+  DESCRIPTION                   = "                                           
+        Sampled value of the magnetic field Z component (Planetocentric       
+        coordinates) measured in units of nanotesla."                         
+END_OBJECT                     = COLUMN                                       
+OBJECT                         = COLUMN                                       
+  NAME                          = "Gain Range"                                
+  COLUMN_NUMBER                 = 6                                           
+  DATA_TYPE                     = "ASCII REAL"                                
+  START_BYTE                    = 70                                          
+  BYTES                         = 4                                           
+  FORMAT                        = "F4.0"                                      
+  VALID_MINIMUM                 = "UNK"                                       
+  VALID_MAXIMUM                 = "UNK"                                       
+  UNIT                          = "N/A"                                       
+  DESCRIPTION                   = "                                           
+        Gain range value from the automatic gain control switch."             
+END_OBJECT                     = COLUMN                                       
+OBJECT                         = COLUMN                                       
+  NAME                          = "Spacecraft position vector X               
+                                   component"                                 
+  COLUMN_NUMBER                 = 7                                           
+  DATA_TYPE                     = "ASCII REAL"                                
+  START_BYTE                    = 75                                          
+  BYTES                         = 12                                          
+  FORMAT                        = "F12.3"                                     
+  UNIT                          = "km"                                        
+  DESCRIPTION                   = "                                           
+        X component (Planetocentric) of the instantaneous position of         
+        the MGS spacecraft at the sample time derived from the SPICE SPK      
+        kernel provided with this archive. The distance is measured from      
+        the Mars center of mass in units of kilometers."                      
+END_OBJECT                     = COLUMN                                       
+OBJECT                         = COLUMN                                       
+  NAME                          = "Spacecraft position vector Y               
+                                   component"                                 
+  COLUMN_NUMBER                 = 8                                           
+  DATA_TYPE                     = "ASCII REAL"                                
+  START_BYTE                    = 88                                          
+  BYTES                         = 11                                          
+  FORMAT                        = "F14.3"                                     
+  UNIT                          = "km"                                        
+  DESCRIPTION                   = "                                           
+        Y component (Planetocentric) of the instantaneous position of         
+        the MGS spacecraft at the sample time derived from the SPICE SPK      
+        kernel provided with this archive. The distance is measured from      
+        the Mars center of mass in units of kilometers."                      
+END_OBJECT                     = COLUMN                                       
+OBJECT                         = COLUMN                                       
+  NAME                          = "Spacecraft position vector Z               
+                                   component"                                 
+  COLUMN_NUMBER                 = 9                                           
+  DATA_TYPE                     = "ASCII REAL"                                
+  START_BYTE                    = 100                                         
+  BYTES                         = 11                                          
+  FORMAT                        = "F14.3"                                     
+  UNIT                          = "km"                                        
+  DESCRIPTION                   = "                                           
+        Z component (Planetocentric) of the instantaneous position of         
+        the MGS spacecraft at the sample time derived from the SPICE SPK      
+        kernel provided with this archive. The distance is measured from      
+        the Mars center of mass in units of kilometers."                      
+END_OBJECT                     = COLUMN                                       
+                                                                              
+OBJECT                         = COLUMN                                       
+  NAME                          = "Outboard RMS Bx"                           
+  COLUMN_NUMBER                 = 10                                          
+  DATA_TYPE                     = "ASCII REAL"                                
+  START_BYTE                    = 113                                         
+  BYTES                         = 8                                           
+  FORMAT                        = "F8.3"                                      
+  UNIT                          = "nT"                                        
+  DESCRIPTION                   = "                                           
+        X component of a four vector giving the root mean square              
+        of the outboard delta words (there are 23 delta words between         
+        fullwords, sampled at either 32, 16, or 8 per second depending        
+        on data rate allocation).  See CATALOG/MAG_DS.CAT for further         
+        information."                                                         
+END_OBJECT                     = COLUMN                                       
+                                                                              
+OBJECT                         = COLUMN                                       
+  NAME                          = "Outboard RMS By"                           
+  COLUMN_NUMBER                 = 11                                          
+  DATA_TYPE                     = "ASCII REAL"                                
+  START_BYTE                    = 122                                         
+  BYTES                         = 8                                           
+  FORMAT                        = "F8.3"                                      
+  UNIT                          = "nT"                                        
+  DESCRIPTION                   = "                                           
+        Y component of a four vector giving the root mean square              
+        of the outboard delta words (there are 23 delta words between         
+        fullwords, sampled at either 32, 16, or 8 per second depending        
+        on data rate allocation).  See CATALOG/MAG_DS.CAT for further         
+        information."                                                         
+END_OBJECT                     = COLUMN                                       
+                                                                              
+OBJECT                         = COLUMN                                       
+  NAME                          = "Outboard RMS Bz"                           
+  COLUMN_NUMBER                 = 12                                          
+  DATA_TYPE                     = "ASCII REAL"                                
+  START_BYTE                    = 131                                         
+  BYTES                         = 8                                           
+  FORMAT                        = "F8.3"                                      
+  UNIT                          = "nT"                                        
+  DESCRIPTION                   = "                                           
+        Z component of a four vector giving the root mean square              
+        of the outboard delta words (there are 23 delta words between         
+        fullwords, sampled at either 32, 16, or 8 per second depending        
+        on data rate allocation).  See CATALOG/MAG_DS.CAT for further         
+        information."                                                         
+END_OBJECT                     = COLUMN                                       
+                                                                              
+OBJECT                         = COLUMN                                       
+  NAME                          = "Outboard RMS Gain Range"                   
+  COLUMN_NUMBER                 = 13                                          
+  DATA_TYPE                     = "ASCII REAL"                                
+  START_BYTE                    = 140                                         
+  BYTES                         = 4                                           
+  FORMAT                        = "F4.0"                                      
+  UNIT                          = "N/A"                                       
+  DESCRIPTION                   = "                                           
+        Gain range component of a four vector giving the root mean square     
+        of the outboard delta words (there are 23 delta words between         
+        fullwords, sampled at either 32, 16, or 8 per second depending        
+        on data rate allocation).  See CATALOG/MAG_DS.CAT for further         
+        information."                                                         
+                                                                              
+END_OBJECT                     = COLUMN                                       
+                                                                              
+OBJECT                         = COLUMN                                       
+  NAME                          = "Outboard BSC Payload Bx"                   
+  COLUMN_NUMBER                 = 14                                          
+  DATA_TYPE                     = "ASCII REAL"                                
+  START_BYTE                    = 146                                         
+  BYTES                         = 7                                           
+  FORMAT                        = "F7.3"                                      
+  UNIT                          = "nT"                                        
+  DESCRIPTION                   = "                                           
+        X component of a four vector giving the (static) spacecraft           
+        field in payload coordinates (this has been removed from the          
+        measured field to compensate for spacecraft field).  See              
+        DATA/ANCIL/SC_MOD.KER for further information."                       
+END_OBJECT                     = COLUMN                                       
+                                                                              
+OBJECT                         = COLUMN                                       
+  NAME                          = "Outboard BSC Payload By"                   
+  COLUMN_NUMBER                 = 15                                          
+  DATA_TYPE                     = "ASCII REAL"                                
+  START_BYTE                    = 154                                         
+  BYTES                         = 7                                           
+  FORMAT                        = "F7.3"                                      
+  UNIT                          = "nT"                                        
+  DESCRIPTION                   = "                                           
+        Y component of a four vector giving the (static) spacecraft           
+        field in payload coordinates (this has been removed from the          
+        measured field to compensate for spacecraft field).  See              
+        DATA/ANCIL/SC_MOD.KER for further information."                       
+END_OBJECT                     = COLUMN                                       
+                                                                              
+OBJECT                         = COLUMN                                       
+  NAME                          = "Outboard BSC Payload Bz"                   
+  COLUMN_NUMBER                 = 16                                          
+  DATA_TYPE                     = "ASCII REAL"                                
+  START_BYTE                    = 162                                         
+  BYTES                         = 7                                           
+  FORMAT                        = "F7.3"                                      
+  UNIT                          = "nT"                                        
+  DESCRIPTION                   = "                                           
+        Z component of a four vector giving the (static) spacecraft           
+        field in payload coordinates (this has been removed from the          
+        measured field to compensate for spacecraft field).  See              
+        DATA/ANCIL/SC_MOD.KER for further information."                       
+END_OBJECT                     = COLUMN                                       
+                                                                              
+OBJECT                         = COLUMN                                       
+  NAME                          = "Outboard BSC Payload Gain Range"           
+  COLUMN_NUMBER                 = 17                                          
+  DATA_TYPE                     = "ASCII REAL"                                
+  START_BYTE                    = 170                                         
+  BYTES                         = 4                                           
+  FORMAT                        = "F4.0"                                      
+  UNIT                          = "N/A"                                       
+  DESCRIPTION                   = "                                           
+        Gain range component of a four vector giving the (static)             
+        spacecraft field in payload coordinates (this has been removed        
+        from the measured field to compensate for spacecraft field).          
+        See DATA/ANCIL/SC_MOD.KER for further information."                   
+END_OBJECT                     = COLUMN                                       
+                                                                              
+OBJECT                         = COLUMN                                       
+  NAME                          = "Outboard BD Payload Bx"                    
+  COLUMN_NUMBER                 = 18                                          
+  DATA_TYPE                     = "ASCII REAL"                                
+  START_BYTE                    = 176                                         
+  BYTES                         = 7                                           
+  FORMAT                        = "F7.3"                                      
+  UNIT                          = "nT"                                        
+  DESCRIPTION                   = "                                           
+        X component of a four vector giving the (dynamic) spacecraft          
+        field in payload coordinates (this has been removed from the          
+        measured field to compensate for spacecraft field).                   
+        See DATA/ANCIL/SC_MOD.KER for further information."                   
+END_OBJECT                     = COLUMN                                       
+                                                                              
+OBJECT                         = COLUMN                                       
+  NAME                          = "Outboard BD Payload By"                    
+  COLUMN_NUMBER                 = 19                                          
+  DATA_TYPE                     = "ASCII REAL"                                
+  START_BYTE                    = 184                                         
+  BYTES                         = 7                                           
+  FORMAT                        = "F7.3"                                      
+  UNIT                          = "nT"                                        
+  DESCRIPTION                   = "                                           
+        Y component of a four vector giving the (dynamic) spacecraft          
+        field in payload coordinates (this has been removed from the          
+        measured field to compensate for spacecraft field).                   
+        See DATA/ANCIL/SC_MOD.KER for further information."                   
+END_OBJECT                     = COLUMN                                       
+                                                                              
+OBJECT                         = COLUMN                                       
+  NAME                          = "Outboard BD Payload Bz"                    
+  COLUMN_NUMBER                 = 20                                          
+  DATA_TYPE                     = "ASCII REAL"                                
+  START_BYTE                    = 192                                         
+  BYTES                         = 7                                           
+  FORMAT                        = "F7.3"                                      
+  UNIT                          = "nT"                                        
+  DESCRIPTION                   = "                                           
+        Z component of a four vector giving the (dynamic) spacecraft          
+        field in payload coordinates (this has been removed from the          
+        measured field to compensate for spacecraft field).                   
+        See DATA/ANCIL/SC_MOD.KER for further information."                   
+END_OBJECT                     = COLUMN                                       
+                                                                              
+OBJECT                         = COLUMN                                       
+  NAME                          = "Outboard BD Payload Gain Range"            
+  COLUMN_NUMBER                 = 21                                          
+  DATA_TYPE                     = "ASCII REAL"                                
+  START_BYTE                    = 200                                         
+  BYTES                         = 4                                           
+  FORMAT                        = "F4.0"                                      
+  UNIT                          = "N/A"                                       
+  DESCRIPTION                   = "                                           
+        Gain range component of a four vector giving the (dynamic)            
+        spacecraft field in payload coordinates (this has been removed        
+        from the measured field to compensate for spacecraft field).          
+        See DATA/ANCIL/SC_MOD.KER for further information."                   
+END_OBJECT                     = COLUMN                                       
+                                                                              
+OBJECT                         = COLUMN                                       
+  NAME                          = "Solar Array -Y Current"                    
+  COLUMN_NUMBER                 = 22                                          
+  DATA_TYPE                     = "ASCII INTEGER"                             
+  START_BYTE                    = 205                                         
+  BYTES                         = 8                                           
+  FORMAT                        = "I8"                                        
+  UNIT                          = "mA"                                        
+  MISSING_CONSTANT              = { -99, -999 }                               
+  DESCRIPTION                   = "                                           
+        Solar array (-Y panel) current from S/C engineering                   
+        data base in units of milliamperes."                                  
+END_OBJECT                     = COLUMN                                       
+                                                                              
+OBJECT                         = COLUMN                                       
+  NAME                          = "Solar Array +Y Current"                    
+  COLUMN_NUMBER                 = 23                                          
+  DATA_TYPE                     = "ASCII INTEGER"                             
+  START_BYTE                    = 214                                         
+  BYTES                         = 8                                           
+  FORMAT                        = "I8"                                        
+  UNIT                          = "mA"                                        
+  MISSING_CONSTANT              = { -99, -999 }                               
+  DESCRIPTION                   = "                                           
+        Solar array (-Y panel) current from S/C engineering                   
+        data base in units of milliamperes."                                  
+END_OBJECT                     = COLUMN                                       
+                                                                              
+OBJECT                         = COLUMN                                       
+  NAME                          = "Solar Array Output Current"                
+  COLUMN_NUMBER                 = 24                                          
+  DATA_TYPE                     = "ASCII INTEGER"                             
+  START_BYTE                    = 223                                         
+  BYTES                         = 8                                           
+  FORMAT                        = "I8"                                        
+  UNIT                          = "mA"                                        
+  MISSING_CONSTANT              = { -99, -999 }                               
+  DESCRIPTION                   = "                                           
+        Solar array output current (total) from S/C engineering               
+        data base in units of milliamperes."                                  
+END_OBJECT                     = COLUMN                                       
+                                                                              

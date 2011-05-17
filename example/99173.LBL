@@ -1,0 +1,67 @@
+PDS_VERSION_ID               = PDS3                                           
+DATA_SET_ID                  = "MGS-M-MAG-3-MAP1/FULLWORD-RES-MAG-V1.0"       
+MISSION_PHASE_NAME           = "MAPPING"                                      
+SPACECRAFT_NAME              = "MARS GLOBAL SURVEYOR"                         
+START_TIME                   = 1999-06-22T00:00:13.412Z                       
+STOP_TIME                    = 1999-06-22T23:59:24.652Z                       
+SPACECRAFT_CLOCK_START_COUNT = "UNK"                                          
+SPACECRAFT_CLOCK_STOP_COUNT  = "UNK"                                          
+INSTRUMENT_ID                = "MAG"                                          
+INSTRUMENT_NAME              = "MAGNETOMETER"                                 
+PRODUCT_ID                   = "MARS-M99D173_PC.STS"                          
+ORIGINAL_PRODUCT_ID          = "m99d173_pc.sts"                               
+^HEADER                      = ("99173.STS", 1<BYTES>)                        
+^TABLE                       = ("99173.STS", 22224<BYTES>)                    
+/* Here are some comments
+   just before the FILE object
+ */
+OBJECT                       = FILE                                           
+  INTERCHANGE_FORMAT           = ASCII                                        
+  RECORD_TYPE                  = STREAM                                       
+  FILE_RECORDS                 = 112023                                       
+  FILE_NAME                    = "99173.STS"                                  
+  DESCRIPTION                  = "                                            
+      This data file contains magnetometer and spacecraft trajectory data in  
+      planetocentric (PC) coordinates. The data file is                       
+      ASCII and includes an attached header (407 lines, 22223 bytes) and      
+      data table. The data are provided at the full word instrument downlink  
+      resolution which varies by orbit. The time tag provided is the          
+      Universal Time (UT) at the spacecraft when the sample was taken.        
+                                                                              
+      The PC coordinate system is the standard body-centered cartesian        
+      planetocentric coordinate system. It is body-fixed and rotates with     
+      the body (Mars) as it spins on its axis. The Z-axis is taken to lie     
+      along the body rotation axis and to be positive in the direction of     
+      angular momentum. The X-axis is defined to lie in the body's            
+      equatorial plane, perpendicular to Z and in the direction of the prime  
+      meridian as defined by the IAU. The Y-axis completes the                
+      right-handed set."                                                      
+                                                                              
+  OBJECT                       = HEADER                                       
+    HEADER_TYPE                  = "GSFC-ODL"                                 
+    RECORDS                      = 407                                        
+    BYTES                        = 22223                                      
+    DESCRIPTION                  = "The first 407 records of this             
+      file is the header section. These records are not fixed length          
+      but the sum of the header bytes is 22223. The ASCII text preceding      
+      the tabular data is a KEYWORD = VALUE type header with carriage         
+      return line feed <CR><LF> 'line' terminators. The header includes       
+      information about the data file in a form that is native to the         
+      instrument team and does not use PDS nomenclature."                     
+  END_OBJECT                   = HEADER                                       
+                                                                              
+  OBJECT                       = TABLE                                        
+    NAME                         = MAG_DATA                                   
+    INTERCHANGE_FORMAT           = ASCII                                      
+    ROWS                         = 111616                                     
+    ROW_BYTES                    = 232                                        
+    COLUMNS                      = 24                                         
+    DESCRIPTION                  = "                                          
+The magnetic field vectors and spacecraft position are stored in a fixed      
+field ASCII table structure that immediately follows the attached header.     
+This file contains 111616 rows of time ordered field vectors in planetocentric
+coordinates."                                                                 
+    ^STRUCTURE                   = "MAG_DATA.FMT"                             
+  END_OBJECT                   = TABLE                                        
+END_OBJECT                   = FILE                                           
+END                                                                           
