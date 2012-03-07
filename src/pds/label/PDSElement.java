@@ -7,7 +7,7 @@ import java.util.Iterator;
 import java.lang.Character;
 /**
  * PDSElement is a class that contains a single definition or line 
- * as specified in the PDS Object Defnition Language (ODL). 
+ * as specified in the PDS Object Definition Language (ODL). 
  * In this context a line may be an simple line of text, a block of 
  * commented text, or a keyword/value pair. A value may extend 
  * over more than one physical line if it is quoted or part of 
@@ -61,7 +61,7 @@ public class PDSElement {
  	 */
  	 public int				mLineCount = 0;
  	 
- 	/** Indicates whether a symtax error occurred will parsing or reading a line.
+ 	/** Indicates whether a syntax error occurred will parsing or reading a line.
  	 */
  	 public boolean			mSyntaxError = false;
  	 
@@ -85,14 +85,13 @@ public class PDSElement {
 		mComment = "";
 		mRaw = null;
 		mMaxLength = 78;	
-		mLineCount = 0;
 		mSyntaxError = false;
  	 	
  	 }
     /** 
      * Parses the next element from a file stream. An element
 	 * is a single definition or line as specified in the PDS 
-	 * Object Defnition Language (ODL). In this context a line 
+	 * Object Definition Language (ODL). In this context a line 
 	 * may be an simple line of text, a block of commented text, 
 	 * or a keyword/value pair. A value may extend over more than 
 	 * one physical line if it is quoted or part of a value set.
@@ -296,10 +295,10 @@ public class PDSElement {
 				if(inComment) continue;
 				if(inValue && !isSpace(c)) { foundValue = true; }
 				
-				if(c == '{') { if(inList) throw(new PDSException("List in a list") ); else inList = true; } 
-				if(c == '}') { if(!inList) throw(new PDSException("End of list without start of list") ); else  inList = false; } 
-				if(c == '(') { if(inOrderedList) throw(new PDSException("Ordered list in an ordered list") ); else inOrderedList = true; }
-				if(c == ')') { if(!inOrderedList) throw(new PDSException("End of ordered list without start of ordered list") ); else inOrderedList = false; }
+				if(c == '{') { if(inList) throw(new PDSException("Line " + mLineCount + "; List in a list") ); else inList = true; } 
+				if(c == '}') { if(!inList) throw(new PDSException("Line " + mLineCount + "; End of list without start of list") ); else  inList = false; } 
+				if(c == '(') { if(inOrderedList) throw(new PDSException("Line " + mLineCount + "; Ordered list in an ordered list") ); else inOrderedList = true; }
+				if(c == ')') { if(!inOrderedList) throw(new PDSException("Line " + mLineCount + "; End of ordered list without start of ordered list") ); else inOrderedList = false; }
 				
 				if(c == '\'') { if(inLiteral) inLiteral = false; else inLiteral = true; }
 				if(c == '<') { if(inUnits) { mSyntaxError = true; return null; } inUnits = true; }
@@ -423,7 +422,7 @@ public class PDSElement {
 
     /** 
      * Parses a string as a value according to the PDS 
-	 * Object Defnition Language (ODL). In this context a value
+	 * Object Definition Language (ODL). In this context a value
 	 * can be a string, literal or list of values. Lists may
 	 * be ordered (enclosed in parenthesis () )  or unordered (enclosed
 	 * in curly braces {} ). A value may extend over more than 
@@ -569,8 +568,8 @@ public class PDSElement {
 	
     /** 
      * Parses a string as a value according to the PDS 
-	 * Object Defnition Language (ODL). In this context a value
-	 * can be a stirng, literal or list of values. Lists may
+	 * Object Definition Language (ODL). In this context a value
+	 * can be a string, literal or list of values. Lists may
 	 * be ordered (enclosed in parenthesis () )  or unordered (enclosed
 	 * in curly braces {} ). A value may extend over more than 
 	 * one physical line if it is quoted or part of a value set.
@@ -655,7 +654,7 @@ public class PDSElement {
 	
     /** 
      * Returns the value associated with the value item in the 
-     * value array that is assocaited with the given index.
+     * value array that is associated with the given index.
      * If the index is out of range a blank value is returned.
 	 * 
      * @param index     the index of the value to return.
@@ -673,7 +672,7 @@ public class PDSElement {
 	
     /** 
      * Returns the units associated with the value item in the 
-     * value array that is assocaited with the given index.
+     * value array that is associated with the given index.
      * If the index is out of range a blank value is returned.
 	 * 
      * @param index     the index of the value to return.

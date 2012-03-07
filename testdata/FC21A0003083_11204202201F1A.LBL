@@ -1,0 +1,396 @@
+PDS_VERSION_ID                = PDS3                                          
+LABEL_REVISION_NOTE           = "20080201, PGM, DAWN FC V1.5"                 
+                                                                              
+/* FILE CHARACTERISTICS */                                                    
+                                                                              
+RECORD_TYPE                   = FIXED_LENGTH                                  
+RECORD_BYTES                  = 512                                           
+FILE_RECORDS                  = 4301                                          
+LABEL_RECORDS                 = 24                                            
+FILE_NAME                     = "FC21A0003083_11204202201F1A.IMG"             
+                                                                              
+/* POINTERS TO DATA OBJECTS */                                                
+                                                                              
+^IMAGE                         = ("FC21A0003083_11204202201F1A.IMG",26)       
+^FRAME_2_IMAGE                 = ("FC21A0003083_11204202201F1A.IMG",4122)     
+^FRAME_3_IMAGE                 = ("FC21A0003083_11204202201F1A.IMG",4205)     
+^FRAME_4_IMAGE                 = ("FC21A0003083_11204202201F1A.IMG",4238)     
+^FRAME_5_IMAGE                 = ("FC21A0003083_11204202201F1A.IMG",4270)     
+^HISTORY                       = ("FC21A0003083_11204202201F1A.IMG",25)       
+                                                                              
+/* SOFTWARE */                                                                
+                                                                              
+SOFTWARE_DESC                 = "TRAP.EXE"                                    
+SOFTWARE_LICENSE_TYPE         = "COMMERCIAL"                                  
+SOFTWARE_ID                   = "TRAP"                                        
+SOFTWARE_NAME                 = "TRAP"                                        
+SOFTWARE_VERSION_ID           = "2.56"                                        
+SOFTWARE_RELEASE_DATE         = 2011-06-0                                     
+                                                                              
+/*   TELEMETRY IDENTIFICATION   */                                            
+                                                                              
+TELEMETRY_FORMAT_ID           = "305"                                         
+                                                                              
+/*   PRODUCT IDENTIFICATION   */                                              
+                                                                              
+DATA_SET_NAME                 = "DAWN FC2 RAW (EDR) VESTA IMAGES V1.0"        
+DATA_SET_ID                   = "DAWN-V-FC2-2-EDR-VESTA-IMAGES-V1.0"          
+PRODUCT_ID                    = "0003083"                                     
+PRODUCT_TYPE                  = "DATA"                                        
+STANDARD_DATA_PRODUCT_ID      = "FC_IMAGE"                                    
+PRODUCER_FULL_NAME            = "PABLO GUTIERREZ-MARQUES"                     
+PRODUCER_INSTITUTION_NAME     =                                               
+    "MAX PLANCK INSTITUT FUER SONNENSYSTEMFORSCHUNG"                          
+PRODUCT_CREATION_TIME         = 2011-07-24T14:23:43.000                       
+PRODUCT_VERSION_ID            = "N/A"                                         
+RELEASE_ID                    = "N/A"                                         
+                                                                              
+/*   TIME IDENTIFICATION   */                                                 
+                                                                              
+SPACECRAFT_CLOCK_START_COUNT  = "364724588:073"                               
+SPACECRAFT_CLOCK_STOP_COUNT   = "364724588:126"                               
+START_TIME                    = 2011-204T20:22:01.980                         
+                                                                              
+/*   MISSION IDENTIFICATION   */                                              
+                                                                              
+INSTRUMENT_HOST_ID            = "DAWN"                                        
+INSTRUMENT_HOST_NAME          = "DAWN"                                        
+MISSION_ID                    = "DAWN"                                        
+MISSION_NAME                  = "DAWN MISSION TO VESTA AND CERES"             
+MISSION_PHASE_NAME            = "VESTA SCIENCE APPROACH"                      
+                                                                              
+/*   INSTRUMENT DESCRIPTION   */                                              
+                                                                              
+INSTRUMENT_ID                 = "FC2"                                         
+INSTRUMENT_NAME               = "FRAMING CAMERA 2"                            
+OBSERVATION_ID                = "VSA_OPNAV_019"                               
+OBSERVATION_TYPE              = "N/A"                                         
+INSTRUMENT_TYPE               = "FRAME CCD REFRACTING TELESCOPE"              
+DETECTOR_DESC                 = "1092x1056 PIXELS FRONTLIT FRAMETRANSFER CCD" 
+DETECTOR_TYPE                 = "SI CCD"                                      
+DETECTOR_TEMPERATURE          = 218.076 <kelvin>                              
+                                                                              
+                                                                              
+/*   SYSTEM HARDWARE AND SOFTWARE CONFIGURATION   */                          
+                                                                              
+DAWN:DPU_HARDWARE_ID          = "1.04"                                        
+DAWN:DPU_SOFTWARE_VERSION     = "3.05"                                        
+DAWN:UDPLIB_SOFTWARE_VERSION  = "3.05.01"                                     
+DAWN:PCU_HARDWARE_ID          = "2.02"                                        
+DAWN:FEE_HARDWARE_ID          = "017.09.09"                                   
+DAWN:MCU_HARDWARE_ID          = "12"                                          
+                                                                              
+/*   MECHANISM STATUS   */                                                    
+                                                                              
+DAWN:FILTER_ENCODER           = 62                                            
+FILTER_NUMBER                 = "1"                                           
+DAWN:FRONT_DOOR_ENCODER       = 53                                            
+DAWN:FRONT_DOOR_STATUS_ID     = "OPEN"                                        
+                                                                              
+/*   IMAGE ACQUISITION OPTIONS   */                                           
+                                                                              
+DAWN:DATA_ROUTING_ID          = "Op Nav"                                      
+EXPOSURE_DURATION             = 14.000 <millisecond>                          
+DAWN:USE_PRE_CLEAR            = "ON"                                          
+DAWN:PCU_HARDWARE_ID          = "NORMAL"                                      
+DAWN:CALLAMP_STROBE_TIME      = "N/A"                                         
+DAWN:CALLAMP_DELAY_TIME       = "N/A"                                         
+DAWN:CALLAMP_FREQUENCY        = "N/A"                                         
+DAWN:CALLAMP_DUTY             = "N/A"                                         
+                                                                              
+/*   DATA COMPRESSION   */                                                    
+                                                                              
+PIXEL_AVERAGING_WIDTH         = 1                                             
+PIXEL_AVERAGING_HEIGHT        = 1                                             
+INST_CMPRS_TYPE               = "NOTCOMP"                                     
+INST_CMPRS_NAME               = "N/A"                                         
+                                                                              
+/*   POWER CONVERTER SWITCH STATUS   */                                       
+                                                                              
+DAWN:FEE_FLAG                 = "ON"                                          
+DAWN:HEATER0_FLAG             = "ON"                                          
+DAWN:HEATER1_FLAG             = "ON"                                          
+DAWN:CALLAMP_ENABLE_FLAG      = "OFF"                                         
+DAWN:MCU_MOTOR_POWER_FLAG     = "ON"                                          
+DAWN:MCU_FLAG                 = "ON"                                          
+DAWN:FSA_SHOOT_FLAG           = "OFF"                                         
+DAWN:FSA_SHOOT_ENABLE_FLAG    = "OFF"                                         
+                                                                              
+/*   POWER SYSTEM STATUS   */                                                 
+                                                                              
+DAWN:V_28                     = 29.720 <volt>                                 
+DAWN:V_16                     = 16.104 <volt>                                 
+DAWN:V_12                     = 12.110 <volt>                                 
+DAWN:V_5                      = 5.170 <volt>                                  
+DAWN:V_M5                     = -5.080 <volt>                                 
+DAWN:V_5_ANALOG               = 5.293 <volt>                                  
+DAWN:V_M5_ANALOG              = -5.172 <volt>                                 
+DAWN:V_3_3                    = 3.337 <volt>                                  
+DAWN:V_2_5                    = 2.500 <volt>                                  
+DAWN:I_28                     = 846.400 <milliampere>                         
+DAWN:I_16                     = 59.949 <milliampere>                          
+DAWN:I_12                     = 70.720 <milliampere>                          
+DAWN:I_5                      = 300.650 <milliampere>                         
+DAWN:I_M5                     = -74.985 <milliampere>                         
+DAWN:I_5_ANALOG               = 215.800 <milliampere>                         
+DAWN:I_M5_ANALOG              = -28.770 <milliampere>                         
+DAWN:I_3_3                    = 239.550 <milliampere>                         
+DAWN:I_2_5                    = 650.550 <milliampere>                         
+                                                                              
+/*   CALIBRATED TEMPERATURES   */                                             
+                                                                              
+DAWN:T_CCD                    = 218.076 <kelvin>                              
+DAWN:T_DPU                    = 292.613 <kelvin>                              
+DAWN:T_DCDC                   = 284.485 <kelvin>                              
+DAWN:T_F12                    = 289.592 <kelvin>                              
+DAWN:T_CSC                    = 289.708 <kelvin>                              
+DAWN:T_COVER_MOTOR            = 243.297 <kelvin>                              
+DAWN:T_LENS_BARREL            = 248.285 <kelvin>                              
+DAWN:T_BAFFLE                 = 242.297 <kelvin>                              
+DAWN:T_FILTER_MOTOR           = 253.272 <kelvin>                              
+DAWN:T_STRUCTURE              = 255.267 <kelvin>                              
+DAWN:T_RAD_MOTOR              = 201.400 <kelvin>                              
+                                                                              
+/*   TEST SETUP CONFIGURATION   */                                            
+                                                                              
+DAWN:PURPOSE                  = "N/A"                                         
+DAWN:OPERATOR                 = "N/A"                                         
+DAWN:SUBJECT                  = "N/A"                                         
+DAWN:TEST_LAMP                = "N/A"                                         
+DAWN:TARGET                   = "N/A"                                         
+DAWN:CHAMBER                  = "N/A"                                         
+                                                                              
+/*   POINTING   */                                                            
+                                                                              
+SPICE_FILE_NAME               = (                                             
+                                 "naif0010.tls",                              
+                                 "pck00010.tpc",                              
+                                 "dawn_vesta_v05.tpc",                        
+                                 "de421.bsp",                                 
+                                 "sb_vesta_110211.bsp",                       
+                                 "DAWN_203_SCLKSCET.00026.tsc",               
+                                 "dawn_fc_v02.ti",                            
+                                 "dawn_vir_v05.ti",                           
+                                 "dawn_grand_v00.ti",                         
+                                 "dawn_struct_v00.ti",                        
+                                 "dawn_vir_zero.bc",                          
+                                 "dawn_v11.tf",                               
+                                 "dawn_vesta_v00.tf",                         
+                                 "dawn_rec_110416-110802_110913_v1.bsp",      
+                                 "dawn_sc_110502_110508.bc",                  
+                                 "dawn_sc_110509_110515.bc",                  
+                                 "dawn_sc_110516_110522.bc",                  
+                                 "dawn_sc_110523_110529.bc",                  
+                                 "dawn_sc_110530_110605.bc",                  
+                                 "dawn_sc_110606_110612.bc",                  
+                                 "dawn_sc_110613_110619.bc",                  
+                                 "dawn_sc_110620_110626.bc",                  
+                                 "dawn_sc_110627_110703.bc",                  
+                                 "dawn_sc_110704_110710.bc",                  
+                                 "dawn_sc_110711_110717.bc",                  
+                                 "dawn_sc_110718_110724.bc",                  
+                                 "dawn_sc_110725_110731.bc",                  
+                                 "dawn_sc_110801_110807.bc",                  
+                                 "dawn_sc_110808_110814.bc"                   
+                                )                                             
+                                                                              
+/*   POINTING J2000 coordinates  */                                           
+                                                                              
+RIGHT_ASCENSION               =  262.993 <degree>                             
+DECLINATION                   =  -81.906 <degree>                             
+TWIST_ANGLE                   =  218.217 <degree>                             
+CELESTIAL_NORTH_CLOCK_ANGLE   =  321.783 <degree>                             
+QUATERNION                    = (                                             
+                                 -0.0679735,                                  
+                                  0.0189848,                                  
+                                  0.3835310,                                  
+                                  0.9208274                                   
+                                )                                             
+QUATERNION_DESC               = "Above parameters are calculated for the      
+     instrument boresight at the center time of the observation which is      
+     2011-07-23T20:22:02.187. The quaternion has the form:                    
+     w, x, y, z (i.e. SPICE format)."                                         
+                                                                              
+/*   Solar geometry in J2000 coordinates  */                                  
+                                                                              
+SPACECRAFT_SOLAR_DISTANCE     =   333624467.132 <kilometer>                   
+SC_SUN_POSITION_VECTOR        = (                                             
+                                  -208456482.831 <kilometer>,                 
+                                   231484289.971 <kilometer>,                 
+                                   119441212.868 <kilometer>                  
+                                )                                             
+SC_SUN_VELOCITY_VECTOR        = (                                             
+                                  -16.616 <kilometer per second>,             
+                                  -11.729 <kilometer per second>,             
+                                   -2.470 <kilometer per second>              
+                                )                                             
+                                                                              
+/*  Tri-axail ellipsoidal target based coordinate system information  */      
+                                                                              
+TARGET_NAME                   = "4 VESTA"                                     
+TARGET_TYPE                   = "ASTEROID"                                    
+COORDINATE_SYSTEM_NAME        = "IAU_VESTA"                                   
+COORDINATE_SYSTEM_CENTER_NAME = "4 VESTA"                                     
+SUB_SPACECRAFT_LATITUDE       =  35.785 <degree>                              
+SUB_SPACECRAFT_LONGITUDE      = 220.164 <degree>                              
+DAWN:SUB_SPACECRAFT_LONGITUDE =  76.164 <degree>                              
+                                                                              
+/*   Target based geometry  */                                                
+                                                                              
+SPACECRAFT_ALTITUDE           =  5.222194e+03 <kilometer>                     
+TARGET_CENTER_DISTANCE        =  5.489252e+03 <kilometer>                     
+ORBIT_NUMBER                  = "NULL"                                        
+SC_TARGET_POSITION_VECTOR     = (                                             
+                                 -3.403001e+03 <kilometer>,                   
+                                 -2.872050e+03 <kilometer>,                   
+                                  3.209798e+03 <kilometer>                    
+                                )                                             
+SC_TARGET_VELOCITY_VECTOR     = (                                             
+                                   -0.962189 <kilometer per second>,          
+                                    1.089273 <kilometer per second>,          
+                                   -0.046328 <kilometer per second>           
+                                )                                             
+LOCAL_HOUR_ANGLE              = 190.103 <degree>                              
+SUB_SOLAR_LATITUDE            = -26.726 <degree>                              
+SUB_SOLAR_LONGITUDE           = 230.266 <degree>                              
+DAWN:SUB_SOLAR_LONGITUDE      =  86.266 <degree>                              
+                                                                              
+/*   Illumination - N/A if boresight not on body  */                          
+                                                                              
+INCIDENCE_ANGLE               =  61.656 <degree>                              
+EMISSION_ANGLE                =   5.174 <degree>                              
+PHASE_ANGLE                   =  63.851 <degree>                              
+                                                                              
+/*   Image parameters - N/A if boresight not on body  */                      
+                                                                              
+SAMPLE_DISPLAY_DIRECTION      = "RIGHT"                                       
+LINE_DISPLAY_DIRECTION        = "UP"                                          
+SLANT_DISTANCE                = 5223.321 <kilometer>                          
+CENTER_LATITUDE               =  24.247 <degree>                              
+CENTER_LONGITUDE              = 224.175 <degree>                              
+DAWN:CENTER_LONGITUDE         =  80.175 <degree>                              
+HORIZONTAL_PIXEL_SCALE        = "NULL"                                        
+VERTICAL_PIXEL_SCALE          = "NULL"                                        
+                                                                              
+/*   Image corner geometry - N/A if corner not on body  */                    
+                                                                              
+RETICLE_POINT_LATITUDE        = (                                             
+                                 "N/A",                                       
+                                 "N/A",                                       
+                                 "N/A",                                       
+                                 "N/A")                                       
+                                )                                             
+RETICLE_POINT_LONGITUDE       = (                                             
+                                 "N/A",                                       
+                                 "N/A",                                       
+                                 "N/A",                                       
+                                 "N/A"                                        
+                                )                                             
+DAWN:RETICLE_POINT_LONGITUDE  = (                                             
+                                 "N/A",                                       
+                                 "N/A",                                       
+                                 "N/A",                                       
+                                 "N/A"                                        
+                                )                                             
+MINIMUM_LATITUDE              = "N/A"                                         
+MAXIMUM_LATITUDE              = "N/A"                                         
+WESTERNMOST_LONGITUDE         = "N/A"                                         
+DAWN:WESTERNMOST_LONGITUDE    = "N/A"                                         
+EASTERNMOST_LONGITUDE         = "N/A"                                         
+DAWN:EASTERNMOST_LONGITUDE    = "N/A"                                         
+NORTH_AZIMUTH                 = "NULL"                                        
+SMEAR_AZIMUTH                 = "NULL"                                        
+SMEAR_MAGNITUDE               = "NULL"                                        
+LIMB_ANGLE                    = "NULL"                                        
+                                                                              
+/* IMAGE OBJECT */                                                            
+                                                                              
+OBJECT                        = IMAGE                                         
+    INTERCHANGE_FORMAT        = BINARY                                        
+    LINE_SAMPLES              = 1024                                          
+    LINES                     = 1024                                          
+    BANDS                     = 1                                             
+    SAMPLE_BITS               = 16                                            
+    SAMPLE_TYPE               = "LSB_UNSIGNED_INTEGER"                        
+    FIRST_LINE                = 17                                            
+    FIRST_LINE_SAMPLE         = 35                                            
+    UNIT                      = "DU"                                          
+    INST_CMPRS_NAME           = "SPIHT_TAP"                                   
+    INST_CMPRS_RATIO          =  2.40                                         
+    INST_CMPRS_TYPE           = "LOSSLESS"                                    
+END_OBJECT                    = IMAGE                                         
+                                                                              
+                                                                              
+/* FRAME_2_IMAGE OBJECT */                                                    
+                                                                              
+OBJECT                        = FRAME_2_IMAGE                                 
+    INTERCHANGE_FORMAT        = BINARY                                        
+    LINE_SAMPLES              = 10                                            
+    LINES                     = 1054                                          
+    BANDS                     = 1                                             
+    SAMPLE_BITS               = 32                                            
+    SAMPLE_TYPE               = "PC_REAL"                                     
+    FIRST_LINE                = 2                                             
+    FIRST_LINE_SAMPLE         = 2                                             
+    UNIT                      = "DU"                                          
+    INST_CMPRS_NAME           = "NONE"                                        
+    INST_CMPRS_RATIO          =  0.00                                         
+    INST_CMPRS_TYPE           = "LOSSLESS"                                    
+END_OBJECT                    = FRAME_2_IMAGE                                 
+                                                                              
+                                                                              
+/* FRAME_3_IMAGE OBJECT */                                                    
+                                                                              
+OBJECT                        = FRAME_3_IMAGE                                 
+    INTERCHANGE_FORMAT        = BINARY                                        
+    LINE_SAMPLES              = 8                                             
+    LINES                     = 1054                                          
+    BANDS                     = 1                                             
+    SAMPLE_BITS               = 16                                            
+    SAMPLE_TYPE               = "LSB_UNSIGNED_INTEGER"                        
+    FIRST_LINE                = 2                                             
+    FIRST_LINE_SAMPLE         = 16                                            
+    UNIT                      = "DU"                                          
+    INST_CMPRS_NAME           = "NONE"                                        
+    INST_CMPRS_RATIO          =  0.00                                         
+    INST_CMPRS_TYPE           = "LOSSLESS"                                    
+END_OBJECT                    = FRAME_3_IMAGE                                 
+                                                                              
+                                                                              
+/* FRAME_4_IMAGE OBJECT */                                                    
+                                                                              
+OBJECT                        = FRAME_4_IMAGE                                 
+    INTERCHANGE_FORMAT        = BINARY                                        
+    LINE_SAMPLES              = 1024                                          
+    LINES                     = 8                                             
+    BANDS                     = 1                                             
+    SAMPLE_BITS               = 16                                            
+    SAMPLE_TYPE               = "LSB_UNSIGNED_INTEGER"                        
+    FIRST_LINE                = 3                                             
+    FIRST_LINE_SAMPLE         = 35                                            
+    UNIT                      = "DU"                                          
+    INST_CMPRS_NAME           = "NONE"                                        
+    INST_CMPRS_RATIO          =  0.00                                         
+    INST_CMPRS_TYPE           = "LOSSLESS"                                    
+END_OBJECT                    = FRAME_4_IMAGE                                 
+                                                                              
+                                                                              
+/* FRAME_5_IMAGE OBJECT */                                                    
+                                                                              
+OBJECT                        = FRAME_5_IMAGE                                 
+    INTERCHANGE_FORMAT        = BINARY                                        
+    LINE_SAMPLES              = 1024                                          
+    LINES                     = 8                                             
+    BANDS                     = 1                                             
+    SAMPLE_BITS               = 16                                            
+    SAMPLE_TYPE               = "LSB_UNSIGNED_INTEGER"                        
+    FIRST_LINE                = 1047                                          
+    FIRST_LINE_SAMPLE         = 35                                            
+    UNIT                      = "DU"                                          
+    INST_CMPRS_NAME           = "NONE"                                        
+    INST_CMPRS_RATIO          =  0.00                                         
+    INST_CMPRS_TYPE           = "LOSSLESS"                                    
+END_OBJECT                    = FRAME_5_IMAGE                                 
+                                                                              
+                                                                              
+END                                                                           

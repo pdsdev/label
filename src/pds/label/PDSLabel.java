@@ -1,19 +1,19 @@
 package pds.label;
 
+import java.io.File;
 import java.io.PrintStream;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.io.FileOutputStream;
-import java.io.OutputStreamWriter;
 import java.io.IOException;
-import java.io.StringWriter;
 import java.io.StringReader;
+
 import java.util.ArrayList;
-import java.util.LinkedList;
+import java.util.HashMap;
 import java.util.Iterator;
-import org.w3c.dom.Document;
+
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.transform.TransformerFactory;
@@ -22,6 +22,7 @@ import javax.xml.transform.OutputKeys;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamSource;
+
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Comment;
@@ -30,9 +31,9 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 /**
- * PDSLabel is a class that contians all information regarding a
+ * PDSLabel is a class that contains all information regarding a
  * PDS label entity. A PDS label entity consists of one or more 
- * elements as specified in the PDS Object Defnition Language (ODL). 
+ * elements as specified in the PDS Object Definition Language (ODL). 
  * Each element may be a simple line of text, a block of 
  * commented text, or a keyword/value pair. Comments and values 
  * may extend over more than one physical line.
@@ -47,6 +48,9 @@ import org.w3c.dom.NodeList;
 public class PDSLabel {
 	/** The list of elements in the label */
  	public ArrayList mElement	= new ArrayList();
+ 	
+	/** The list of files referenced in the label */
+ 	public ArrayList<String> mProductFile	= new ArrayList<String>();
  	
  	/** The path and file name used when loading a label from a file.*/
  	public String	mPathName	= "";
@@ -69,7 +73,7 @@ public class PDSLabel {
  	/** 
      * Returns a string with the release information for this compilation.
      *
-     * @return	a string contining the release information for this compilation.
+     * @return	a string containing the release information for this compilation.
      * @since           1.0
      */
 	public String version() {
@@ -196,7 +200,7 @@ public class PDSLabel {
  	
  	
     /** 
-     * Parses a file containing a PDS label into its constitute elments.
+     * Parses a file containing a PDS label into its constitute elements.
 	 * The path and name of the file are passed to the method which is
 	 * opened and parsed.
 	 *
@@ -229,7 +233,7 @@ public class PDSLabel {
  	}
  	
     /** 
-     * Parses a file containing a PDS label into its constitute elments.
+     * Parses a file containing a PDS label into its constitute elements.
 	 * The file to parse must be previously opened and a InputStream
 	 * pointing to the file is passed.
 	 *
@@ -257,7 +261,7 @@ public class PDSLabel {
  	}
 
     /** 
-     * Parses a file containing a PDS label into its constitute elments.
+     * Parses a file containing a PDS label into its constitute elements.
 	 * The file to parse must be previously opened and a BufferedReader
 	 * pointing to the file is passed.
 	 *
@@ -283,8 +287,8 @@ public class PDSLabel {
 				more = element.parse(reader);
 				if(more) {
 					mElement.add(element);
-					mLineCount = element.mLineCount;
 				}
+				mLineCount = element.mLineCount;
 			}
 		} catch(Exception e) {
 			// e.printStackTrace();
@@ -295,7 +299,7 @@ public class PDSLabel {
  	}
 
     /** 
-     * Parses a file containing XML into its constitute elments.
+     * Parses a file containing XML into its constitute elements.
 	 * The path and name of the file are passed to the method which is
 	 * opened and parsed.
 	 *
@@ -325,7 +329,7 @@ public class PDSLabel {
  	}
  	
     /** 
-     * Parses a file containing XML into its constitute elments.
+     * Parses a file containing XML into its constitute elements.
 	 * The file to parse must be previously opened and a InputStream
 	 * pointing to the file is passed.
 	 *
@@ -485,7 +489,7 @@ public class PDSLabel {
  	 * Looks for elements with the keyword "OBJECT" and a value of the
  	 * given name. If such an element is found then the corresponding 
  	 * element with the keyword "END_OBJECT" is located. The passed name 
- 	 * can contain regular expressions. Any occurance of a "*" in the 
+ 	 * can contain regular expressions. Any occurrence of a "*" in the 
  	 * string is converted to the regular expression ".*" to match 
  	 * any number of characters. 
  	 * The search begins at the first element in the label and extends 
@@ -503,11 +507,11 @@ public class PDSLabel {
  	}
  	
     /** 
- 	 * Find the object with the given name within a partion of a label.
+ 	 * Find the object with the given name within a portion of a label.
  	 * Looks for elements with the keyword "OBJECT" and a value of the
  	 * given name. If such an element is found then the corresponding 
  	 * element with the keyword "END_OBJECT" is located. The passed name 
- 	 * can contain regular expressions. Any occurance of a "*" in the 
+ 	 * can contain regular expressions. Any occurrence of a "*" in the 
  	 * string is converted to the regular expression ".*" to match 
  	 * any number of characters. 
  	 * The search begins at the first element indicated the {@link PDSItem} 
@@ -529,11 +533,11 @@ public class PDSLabel {
  	}
  	
     /** 
- 	 * Find the next object with the given name ocurring after the passed item.
+ 	 * Find the next object with the given name occurring after the passed item.
  	 * Looks for elements with the keyword "OBJECT" and a value of the
  	 * given name. If such an element is found then the corresponding 
  	 * element with the keyword "END_OBJECT" is located. The passed name 
- 	 * can contain regular expressions. Any occurance of a "*" in the 
+ 	 * can contain regular expressions. Any occurrence of a "*" in the 
  	 * string is converted to the regular expression ".*" to match 
  	 * any number of characters. 
  	 * The search begins at the element at the endAt position in the 
@@ -721,11 +725,11 @@ public class PDSLabel {
  	}
  	
     /** 
- 	 * Find the value assocated with an element with the given name within 
+ 	 * Find the value associated with an element with the given name within 
  	 * implied object of the a label.
- 	 * The passed name can contain regular expressions. Any occurance
+ 	 * The passed name can contain regular expressions. Any occurrence
  	 * of a "*" in the string is converted to the regular expression ".*"
- 	 * to match any number of characters. Also any occurance of "^" is converted
+ 	 * to match any number of characters. Also any occurrence of "^" is converted
  	 * to a literal "^" since it is a valid character in keywords.
  	 * The search begins at the first element in the label and extends to the last.
 	 *
@@ -742,11 +746,11 @@ public class PDSLabel {
  	}
  	
     /** 
- 	 * Find the value assocated with an element with the given name within 
- 	 * a section of the label without decending into sub-objects.
- 	 * The passed name can contain regular expressions. Any occurance
+ 	 * Find the value associated with an element with the given name within 
+ 	 * a section of the label without descending into sub-objects.
+ 	 * The passed name can contain regular expressions. Any occurrence
  	 * of a "*" in the string is converted to the regular expression ".*"
- 	 * to match any number of characters. Also any occurance of "^" is converted
+ 	 * to match any number of characters. Also any occurrence of "^" is converted
  	 * to a literal "^" since it is a valid character in keywords.
  	 * The search begins at the first element in the label and extends to the last.
 	 *
@@ -779,9 +783,9 @@ public class PDSLabel {
  	
     /** 
  	 * Find the item with the given name.
- 	 * The passed name can contain regular expressions. Any occurance
+ 	 * The passed name can contain regular expressions. Any occurrence
  	 * of a "*" in the string is converted to the regular expression ".*"
- 	 * to match any number of characters. Also any occurance of "^" is converted
+ 	 * to match any number of characters. Also any occurrence of "^" is converted
  	 * to a literal "^" since it is a valid character in keywords.
  	 * The search begins at the first element in the label and extends to the last.
 	 *
@@ -799,9 +803,9 @@ public class PDSLabel {
     /** 
  	 * Find the item with the given name following the passed item in the
  	 * in the object containing the passed item.
- 	 * The passed name can contain regular expressions. Any occurance
+ 	 * The passed name can contain regular expressions. Any occurrence
  	 * of a "*" in the string is converted to the regular expression ".*"
- 	 * to match any number of characters. Also any occurance of "^" is converted
+ 	 * to match any number of characters. Also any occurrence of "^" is converted
  	 * to a literal "^" since it is a valid character in keywords.
  	 * The search begins at the first element in the label and extends to the last.
 	 *
@@ -834,9 +838,9 @@ public class PDSLabel {
  	
     /** 
  	 * Find the item with the given name in the object containing the passed item.
- 	 * The passed name can contain regular expressions. Any occurance
+ 	 * The passed name can contain regular expressions. Any occurrence
  	 * of a "*" in the string is converted to the regular expression ".*"
- 	 * to match any number of characters. Also any occurance of "^" is converted
+ 	 * to match any number of characters. Also any occurrence of "^" is converted
  	 * to a literal "^" since it is a valid character in keywords.
  	 * The search begins at the first element in the label and extends to the last.
 	 *
@@ -856,9 +860,9 @@ public class PDSLabel {
  	
     /** 
  	 * Find the item with the given name constrained to some portion of the label.
- 	 * The passed name can contain regular expressions. Any occurance
+ 	 * The passed name can contain regular expressions. Any occurrence
  	 * of a "*" in the string is converted to the regular expression ".*"
- 	 * to match any number of characters. Also any occurance of "^" is converted
+ 	 * to match any number of characters. Also any occurrence of "^" is converted
  	 * to a literal "^" since it is a valid character in keywords.
  	 * The search begins at the first element indicated in the passed {@link PDSItem}
  	 * and extends to the last item.
@@ -879,9 +883,9 @@ public class PDSLabel {
  	
     /** 
  	 * Find the item with the given name constrained to some portion of the label.
- 	 * The passed name can contain regular expressions. Any occurance
+ 	 * The passed name can contain regular expressions. Any occurrence
  	 * of a "*" in the string is converted to the regular expression ".*"
- 	 * to match any number of characters. Also any occurance of "^" is converted
+ 	 * to match any number of characters. Also any occurrence of "^" is converted
  	 * to a literal "^" since it is a valid character in keywords.
  	 * The search begins at the first element indicated in the passed {@link PDSItem}
  	 * and extends to the last item.
@@ -904,9 +908,9 @@ public class PDSLabel {
  	
     /** 
  	 * Find the item with the given name constrained to some portion of the label.
- 	 * The passed name can contain regular expressions. Any occurance
+ 	 * The passed name can contain regular expressions. Any occurrence
  	 * of a "*" in the string is converted to the regular expression ".*"
- 	 * to match any number of characters. Also any occurance of "^" is converted
+ 	 * to match any number of characters. Also any occurrence of "^" is converted
  	 * to a literal "^" since it is a valid character in keywords.
  	 * The search begins at the first element indicated in the passed {@link PDSItem}
  	 * and extends to the last item.
@@ -954,9 +958,9 @@ public class PDSLabel {
  	
     /** 
  	 * Find the next item with the given name starting at some point within the label.
- 	 * The passed name can contain regular expressions. Any occurance
+ 	 * The passed name can contain regular expressions. Any occurrence
  	 * of a "*" in the string is converted to the regular expression ".*"
- 	 * to match any number of characters. Also any occurance of "^" is converted
+ 	 * to match any number of characters. Also any occurrence of "^" is converted
  	 * to a literal "^" since it is a valid character in keywords.
  	 * The search begins at the first element indicated in the passed {@link PDSItem} and 
  	 * extends to the end of the label.
@@ -1012,9 +1016,9 @@ public class PDSLabel {
  	
     /** 
  	 * Find the element with the given name.
- 	 * The passed name can contain regular expressions. Any occurance
+ 	 * The passed name can contain regular expressions. Any occurrence
  	 * of a "*" in the string is converted to the regular expression ".*"
- 	 * to match any number of characters. Also any occurance of "^" is converted
+ 	 * to match any number of characters. Also any occurrence of "^" is converted
  	 * to a literal "^" since it is a valid character in keywords.
  	 * The search begins at the first element in the label and extends to the last.
 	 *
@@ -1040,9 +1044,9 @@ public class PDSLabel {
  	
     /** 
  	 * Find the element with the given name within a section (usually an object).
- 	 * The passed name can contain regular expressions. Any occurance
+ 	 * The passed name can contain regular expressions. Any occurrence
  	 * of a "*" in the string is converted to the regular expression ".*"
- 	 * to match any number of characters. Also any occurance of "^" is converted
+ 	 * to match any number of characters. Also any occurrence of "^" is converted
  	 * to a literal "^" since it is a valid character in keywords.
  	 * The search begins at the first element in the label and extends to the last.
 	 *
@@ -1240,36 +1244,62 @@ public class PDSLabel {
 					if(add)list.add(buffer);
 				}
 			}
-			/* Not so old way 
-			if(element.mValue.size() != 0) {
-				value = (PDSValue) element.mValue.get(0);
-				String buffer = new String();
-				buffer = value.mValue;
-				// Check if already in list
-				add = true;
-				Iterator i = list.iterator();
-				while(i.hasNext()) {
-					temp = (String) i.next();
-					if(temp.compareTo(buffer) == 0) { add = false; break; }
-				}
-				if(add)list.add(buffer);
-			}
-			*/
-			/* Old way - now we take just the first value in the list
-			for(int i = 0; i < element.mValue.size(); i++) {
-				value = (PDSValue) element.mValue.get(i);
-				if(value.mType == PDSValue.TYPE_STRING) {
-					String buffer = new String();
-					buffer = value.mValue;
-					list.add(buffer);
-				}
-			}
-			*/
 			item = findNextItem("^*", item);
 		}
 		if(list.size() == 0) return null;
 		
 		return list;
+ 	}
+ 	
+ 	/** 
+     * Expand INCLUDE and STRUCTURE pointers.
+     * For each INCLUDE or STRCUTURE pointer treat the value as the name of the file 
+     * to include. The contents of the file are read, parsed and inserted in place of the pointer.
+     *
+     * @return		a new PDSLabel with all include and structure pointers expanded. 
+     * @since           1.0.2
+     */
+	public PDSLabel expandPointers(String path) 
+		throws PDSException
+	{
+ 		PDSElement	element;
+ 		PDSValue	value;
+ 		int			i;
+ 		String 		includePath = "";
+		
+ 		if(path != null) includePath = path;
+ 		
+ 		int endAt = mElement.size();
+
+ 		PDSLabel label = new PDSLabel();
+ 		
+ 		label.mPathName = mPathName;
+ 		
+ 		for(i = 0; i < endAt; i++) {
+ 			element = (PDSElement) mElement.get(i);
+			if(element.mKeyword.compareTo("^INCLUDE") == 0 || element.mKeyword.compareTo("^STRUCTURE") == 0 ) {
+				PDSLabel sublabel = new PDSLabel();
+				try {
+					String fileName = element.valueString(true);
+					File check1 = new File(fileName);
+					if(! check1.exists() && path != null) {
+						fileName = path + "/" + fileName;
+					}
+					sublabel.parse(fileName);
+					int subendat = sublabel.mElement.size();
+					for(int n = 0; n < subendat; n++) {
+						PDSElement elem = (PDSElement) sublabel.mElement.get(n);
+						label.add(elem.copy());
+					}
+				}  catch(Exception e) {
+					throw(new PDSException(e.getMessage()) );
+				}
+			} else {
+				label.add(element.copy());
+			}
+		}
+ 		
+ 		return label;
  	}
  	
     /** 
@@ -1349,7 +1379,7 @@ public class PDSLabel {
      * Print all elements in the label according to PDS specifications 
      * for label files. Each line that is output can be indented with the equal sign
      * (when present) placed at a fixed position. Output printed to System.out.
-     * Each occurance of an OBJECT is indented on level.
+     * Each occurrence of an OBJECT is indented on level.
 	 * 
      * @param out    	the stream to print the element to.
      * @param indent    the number of spaces to indent for each level.
@@ -1368,7 +1398,7 @@ public class PDSLabel {
      * Print a range of elements in the label according to PDS specifications 
      * for label files. Each line that is output can be indented with the equal sign
      * (when present) placed at a fixed position. Output is printed to the print stream.
-     * Each occurance of an OBJECT is indented on level.
+     * Each occurrence of an OBJECT is indented on level.
 	 * 
      * @param out    	the stream to print the element to.
      * @param indent    the number of spaces to indent for each level.
@@ -1388,7 +1418,7 @@ public class PDSLabel {
      * Print a range of elements in the label according to PDS specifications 
      * for label files. Each line that is output can be indented with the equal sign
      * (when present) placed at a fixed position. Output is printed to the print stream.
-     * Each occurance of an OBJECT is indented on level.
+     * Each occurrence of an OBJECT is indented on level.
 	 * 
      * @param out    	the stream to print the element to.
      * @param indent    the number of spaces to indent for each level.
@@ -1418,13 +1448,13 @@ public class PDSLabel {
  	}
  	
  	/** 
-     * Prints out the label as a set of variable definition in the PPI Ruleset lanaguage.
-     * Each keyword is preceeded by a "$" to make it a variable definition and given
+     * Prints out the label as a set of variable definition in the PPI Ruleset language.
+     * Each keyword is preceded by a "$" to make it a variable definition and given
      * a suffix corresponding to the sequential order of the object that contains it.
-     * For exmaple the keyword "DESCRIPTION" in the first object will have the variable
-     * definition of "$DESCRIPTION_1", the occurance in the second object with have
+     * For example the keyword "DESCRIPTION" in the first object will have the variable
+     * definition of "$DESCRIPTION_1", the occurrence in the second object with have
      * a definition of "$DESCRIPTION_2". The "OBJECT" and "END_OBJECT" elements are not
-     * printed. There is an implicit "FILE" around any label defnition, so keywords appearing
+     * printed. There is an implicit "FILE" around any label definition, so keywords appearing
      * outside any explicit object have the suffix of "_1", the first explicit object
      * will have a suffix of "_2".
 	 * 
@@ -1456,7 +1486,7 @@ public class PDSLabel {
  	
  	/** 
      * Display the passed text as a message to System.out
-     * Preceeds the text with a stanard phrase.
+     * Precedes the text with a standard phrase.
 	 * 
      * @param text    	the variable portion of the message text.
      *
@@ -1591,7 +1621,7 @@ public class PDSLabel {
      * added until an END_OBJECT is encounter with the given "name" or the end of 
      * list in reached. The index of the last element pushed is returned. 
      * This permits the calling method to walk through
-     * element list for the PDS label and create the proper hiearchy.
+     * element list for the PDS label and create the proper hierarchy.
 	 * 
      * @param doc    	the {@link Document} to add the elements to.
      * @param parent    the {@link Element} in doc under which to add the elements.
@@ -1668,6 +1698,98 @@ public class PDSLabel {
  			}
  		}
  		return i;
+ 	}
+
+ 	/** 
+     * Generate a nested HashMap for the label that includes product information.
+     * The {@link HashMap} is a keyword, value map. Each OBJECT is stored
+     * in a ArrayList with a HashMap of the object. The value assigned
+     * to the OBJECT keyword is mapped to "OBJECT_NAME" in the {@link HashMap}.
+     * The first file referenced by an object pointer is assigned to "PRODUCT_FILE"
+     * and the MD5 checksum for the file is assigned to "PRODUCT_MD5".
+     *
+     * @since           1.0
+     */
+	public HashMap<String, Object> getHashMap(int startAt) {
+		mProductFile.clear();
+		HashMap<String, Object> map = getLabelHashMap(startAt);
+		File file = new File(mPathName);
+		if(mProductFile.isEmpty()) {
+			mProductFile.add(file.getName());
+		}
+		map.put("PRODUCT_FILE", mProductFile.get(0));
+		try {
+			String fileName = file.getParent() + "/" + mProductFile.get(0);
+			System.out.println("FileName:" + fileName);
+			map.put("PRODUCT_MD5", igpp.util.Digest.digestFile(fileName));
+		} catch(Exception e) {
+			map.put("PRODUCT_MD5", "");
+			
+		}
+		
+		return map;
+	}
+	
+ 	/** 
+     * Generate a nested HashMap for the label.
+     * The {@link HashMap} is a keyword, value map. Each OBJECT is stored
+     * in a ArrayList with a HashMap of the object. The value assigned
+     * to the OBJECT keyword is mapped to "OBJECT_NAME" in the {@link HashMap}.
+     * 
+     *
+     * @since           1.0
+     */
+	public HashMap<String, Object> getLabelHashMap(int startAt) {
+ 		if(startAt < 0) startAt = 0;
+ 		int endAt = mElement.size();
+ 		
+ 		HashMap<String, Object> map = new HashMap<String, Object>();
+ 		HashMap<String, ArrayList<HashMap<String, Object>>> object = new HashMap<String, ArrayList<HashMap<String, Object>>>();
+ 		
+ 		// Use external variable mLineCount to walk the element stack.
+ 		// This allows us to handle nested OBJECT definitions properly.
+ 		for(mLineCount = startAt; mLineCount < endAt; mLineCount++) {
+ 			PDSElement element = (PDSElement) mElement.get(mLineCount);
+ 			
+			if(element.mKeyword.compareTo("END_OBJECT") == 0) { return(map); }
+			
+			if(element.mKeyword.compareTo("OBJECT") == 0) {
+				// Get object class
+				String name = element.valueString(true, false);
+				int n = name.lastIndexOf('_');
+				if(n != -1) name = name.substring(n+1);
+				
+				ArrayList<HashMap<String, Object>> stack = object.get(name);
+				if(stack == null) {	// One does not exist - create it
+					stack = new ArrayList<HashMap<String, Object>>();
+					object.put(name, stack);	// Store ArrayList in local object list.
+					map.put(name, stack);	// Put ArrayList in map
+				}
+				
+				// Get Object HashMap and save
+				HashMap<String, Object> submap = getLabelHashMap(mLineCount+1);	// Get Object HashMap
+				String objectName = element.valueString(true, false);
+				submap.put("OBJECT_NAME", objectName);	// Add OBJECT_NAME
+				// Check if there is a pointer to this object
+				PDSElement elem = getElement("^" + objectName);
+				if(elem != null) {
+					boolean found = false;
+					String fileName = elem.value(0);
+					for(String pname : mProductFile) {
+						if(pname.compareTo(fileName) == 0) {found = true; break; }
+					}
+					mProductFile.add(fileName);
+					submap.put("OBJECT_FILE", fileName);
+					if(elem.valueSize() > 1) {
+						submap.put("OBJECT_OFFSET", elem.value(1));	// Add OBJECT_OFFSET in file
+					}
+				}
+				stack.add(submap);	// Put object Map in ArrayList
+			} else {
+				if(element.mKeyword.length() > 0) map.put(element.mKeyword, element.valueString(true, false));
+			}
+		}
+ 		return map;
  	}
 }
 
