@@ -11,9 +11,11 @@ package pds.label;
  */
 public class PDSException extends Exception {
 
-   public PDSException() { }
+	private static final long serialVersionUID = -2043324630879333598L;
 
-   public PDSException(String msg) {
-      super(msg);
-   }
+	public PDSException() { }
+
+	public PDSException(String msg) {
+		super(msg);
+	}
 }

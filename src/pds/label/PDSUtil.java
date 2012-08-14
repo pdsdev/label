@@ -14,7 +14,7 @@ import java.util.*;
  */
 public class PDSUtil {
  	/** Array of lines of text */
- 	ArrayList		mLine = new ArrayList();
+ 	ArrayList<String>		mLine = new ArrayList<String>();
  	
  	/** PDS convention for a newline (carriage return followed by newline) */
  	String			mNewline = "\r\n";
@@ -73,7 +73,7 @@ public class PDSUtil {
      */
  	public void trimRight() {
  		String			buffer = "";
-		int				i, j, n;
+		int				i, j;
  		
 		for(i = 0; i < mLine.size(); i++) {
 			buffer = mLine.get(i).toString();

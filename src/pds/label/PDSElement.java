@@ -35,7 +35,7 @@ public class PDSElement {
  	 * 						the equal sign in the element. There may be any number of
  	 *						values.
  	 */
- 	public ArrayList<PDSValue>	mValue = new ArrayList();
+ 	public ArrayList<PDSValue>	mValue = new ArrayList<PDSValue>();
  	
  	/** The basic type of the value. Possible values include:
  	 *						<dt>TYPE_NONE</dt><dd>Unspecified grouping type</dd>
@@ -110,14 +110,10 @@ public class PDSElement {
 	{
 		char		lastC = 0;
 		char		c = 0;
-		int			quote = ' ';
 		int			i;
 		int 		total = 0;
 		boolean		inQuote = false;
-		boolean		inBlock = false;
 		boolean		inComment = false;
-		boolean		inUnits = false;
-		boolean		add = true;
 		int			commentStart;
 		int			commentEnd;
 		boolean		scanning = true;
@@ -146,7 +142,7 @@ public class PDSElement {
 					}
 					if(!inQuote) {	// Check if in comment
 						if(lastC == '/' && c == '*') { commentStart = i-1; inComment = true; }
-						if(lastC == '*' && c == '/') { commentEnd = i; inComment = false; add = false; }
+						if(lastC == '*' && c == '/') { commentEnd = i; inComment = false; }
 					}
 					lastC = c;
 					
@@ -253,7 +249,6 @@ public class PDSElement {
 	{
 		int			lastC	= 0;
 		int			c		= 0;
-		int			quote = ' ';
 		boolean		inQuote = false;
 		boolean		inLiteral = false;
 		boolean		inList = false;
@@ -269,7 +264,7 @@ public class PDSElement {
 
 		int			maxBuffer	= 4048;
 		char[]		buffer = new char[maxBuffer];
-		ArrayList	buffList = new ArrayList();
+		ArrayList<char[]>	buffList = new ArrayList<char[]>();
 
 		mSyntaxError = false;
 		try {
@@ -322,10 +317,9 @@ public class PDSElement {
 		// Build up return string
 		int	i;
 		int	start = 0;
-		int	end;
 		int	remaining = total;
 		char[] cbuff = new char[total];
-		Iterator t = buffList.iterator();
+		Iterator<char[]> t = buffList.iterator();
 		while(t.hasNext()) {
 			buffer = (char[]) t.next();
 			n = remaining;
@@ -443,7 +437,6 @@ public class PDSElement {
 		int			quote = ' ';
 		int			i;
 		boolean		inQuote = false;
-		boolean		inComment = false;
 		boolean		inUnits = false;
 		boolean		inList = false;
 		PDSValue	value;
@@ -588,7 +581,6 @@ public class PDSElement {
 		int			quote = ' ';
 		int			i;
 		boolean		inQuote = false;
-		boolean		inComment = false;
 		boolean		inUnits = false;
 		PDSValue	value;
 
@@ -927,7 +919,7 @@ public class PDSElement {
 		out.println("Line Count: " + mLineCount);
 		out.println("Type: " + mType);
 		out.println("Comment: " + mComment);
-		out.println("Raw line: " + mRaw);
+		out.println("Raw line: " + String.valueOf(mRaw));
 		out.println("--- Parsed values ---");
 		out.println("Number of values: " + mValue.size());
 		for(int i = 0; i < mValue.size(); i++) {

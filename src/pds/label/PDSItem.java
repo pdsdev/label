@@ -1,8 +1,5 @@
 package pds.label;
 
-import java.io.*;
-import java.util.*;
-
 /**
  * PDSItem is a class that descibes the location within a
  * {@link PDSLabel} of one or more elements.

@@ -47,7 +47,7 @@ import org.w3c.dom.NodeList;
 // Container for a label 
 public class PDSLabel {
 	/** The list of elements in the label */
- 	public ArrayList mElement	= new ArrayList();
+ 	public ArrayList<PDSElement> mElement	= new ArrayList<PDSElement>();
  	
 	/** The list of files referenced in the label */
  	public ArrayList<String> mProductFile	= new ArrayList<String>();
@@ -86,7 +86,7 @@ public class PDSLabel {
      * @since           1.0
      */
  	public void reset() {
- 		mElement = new ArrayList();
+ 		mElement = new ArrayList<PDSElement>();
  	}
  	
  	/**
@@ -100,7 +100,7 @@ public class PDSLabel {
     		System.out.println("Proper usage: pds.label.PDSLabel pathname [dump|xml]");
     		return;
     	}
-    	ArrayList	files = null;
+    	ArrayList<String>	files = null;
     	
     	PDSLabel label = new PDSLabel();
     	try {
@@ -132,9 +132,9 @@ public class PDSLabel {
 	    	if(files == null) {
 	    		System.out.println("No file pointers.");
 	    	} else {
-	    		Iterator i = files.iterator();
+	    		Iterator<String> i = files.iterator();
 	    		while(i.hasNext()) {
-	    			System.out.println((String) i.next());
+	    			System.out.println(i.next());
 	    		}
 	    	}
 	    	
@@ -929,9 +929,8 @@ public class PDSLabel {
      * @since           1.0
      */
  	public PDSItem findItem(String name, int startAt, int endAt, boolean global) {
- 		int			i, k;
+ 		int			i;
  		PDSElement	element;
- 		PDSValue	value;
  		PDSItem		item = new PDSItem();
  		PDSItem		object;
  		
@@ -1216,14 +1215,14 @@ public class PDSLabel {
      *				<code>null</code> is returned.
      * @since           1.0
      */
-	public ArrayList filePointers() {
+	public ArrayList<String> filePointers() {
 		PDSItem		item = new PDSItem();
-		ArrayList	list = new ArrayList();
+		ArrayList<String>	list = new ArrayList<String>();
 		PDSElement	element;
 		PDSValue	value;
 		boolean		add;
 		String		temp;
-		Iterator 	li ;
+		Iterator<String> 	li ;
 		
 		item.empty();
 		item = findNextItem("^*", item);
@@ -1263,11 +1262,7 @@ public class PDSLabel {
 		throws PDSException
 	{
  		PDSElement	element;
- 		PDSValue	value;
  		int			i;
- 		String 		includePath = "";
-		
- 		if(path != null) includePath = path;
  		
  		int endAt = mElement.size();
 
@@ -1432,7 +1427,6 @@ public class PDSLabel {
      */
 	public void print(PrintStream out, int indent, int equal, int startAt, int endAt) {
  		PDSElement	element;
- 		PDSValue	value;
  		int			i;
  		int			level = 0;
  		
@@ -1523,7 +1517,6 @@ public class PDSLabel {
 	public Document getDocument() 
 	{
 		Document	doc = null;
-		PDSElement	element;
 		
 		try {
 	        //We need a Document
@@ -1643,7 +1636,6 @@ public class PDSLabel {
 		Text	text;
 		PDSElement	element;
 		int		i;
-		boolean	pointer;
 		
 		object = doc.createElement(name);
 		if(parent == null) doc.appendChild(object);
@@ -1677,7 +1669,6 @@ public class PDSLabel {
 	 				// Now add element
 	 				// Check if pointer - adjust accordingly
 	 				if(keyword.charAt(0) == '^') { // If pointer handle a little differently
-	 					pointer = true; 
 	 					keyword = keyword.substring(1); 
 	 					elem = doc.createElement("POINTER");
 	 					elem.setAttribute("object", keyword);
@@ -1720,10 +1711,9 @@ public class PDSLabel {
 		map.put("PRODUCT_FILE", mProductFile.get(0));
 		try {
 			String fileName = file.getParent() + "/" + mProductFile.get(0);
-			System.out.println("FileName:" + fileName);
-			map.put("PRODUCT_MD5", igpp.util.Digest.digestFile(fileName));
+			map.put("PRODUCT_FILE_MD5", igpp.util.Digest.digestFile(fileName));
 		} catch(Exception e) {
-			map.put("PRODUCT_MD5", "");
+			map.put("PRODUCT_FILE_MD5", "");
 			
 		}
 		
@@ -1773,20 +1763,30 @@ public class PDSLabel {
 				// Check if there is a pointer to this object
 				PDSElement elem = getElement("^" + objectName);
 				if(elem != null) {
-					boolean found = false;
 					String fileName = elem.value(0);
 					for(String pname : mProductFile) {
-						if(pname.compareTo(fileName) == 0) {found = true; break; }
+						if(pname.compareTo(fileName) == 0) { break; }
 					}
 					mProductFile.add(fileName);
 					submap.put("OBJECT_FILE", fileName);
+					try {
+						File file = new File(mPathName);
+						String pathName = file.getParent() + "/" + fileName;
+						submap.put("OBJECT_FILE_MD5", igpp.util.Digest.digestFile(pathName));
+					} catch(Exception e) {
+						submap.put("OBJECT_FILE_MD5", "");				
+					}
 					if(elem.valueSize() > 1) {
-						submap.put("OBJECT_OFFSET", elem.value(1));	// Add OBJECT_OFFSET in file
+						submap.put("OBJECT_LOCATION", elem.value(1));
 					}
 				}
 				stack.add(submap);	// Put object Map in ArrayList
 			} else {
-				if(element.mKeyword.length() > 0) map.put(element.mKeyword, element.valueString(true, false));
+				if(element.mKeyword.length() > 0) {
+					ArrayList<String> list = element.valueList(true);
+					if(list.size() == 1) map.put(element.mKeyword, element.valueString(true, false));
+					else map.put(element.mKeyword, list);
+				}
 			}
 		}
  		return map;
