@@ -1736,6 +1736,8 @@ public class PDSLabel {
  		HashMap<String, Object> map = new HashMap<String, Object>();
  		HashMap<String, ArrayList<HashMap<String, Object>>> object = new HashMap<String, ArrayList<HashMap<String, Object>>>();
  		
+ 		String[]  className = { "TABLE", "SPREADSHEET", "IMAGE", "SERIES", "SPECTRUM", "QUBE", "HISTOGRAM", "PALETTE", "HEADER" };
+ 		
  		// Use external variable mLineCount to walk the element stack.
  		// This allows us to handle nested OBJECT definitions properly.
  		for(mLineCount = startAt; mLineCount < endAt; mLineCount++) {
@@ -1747,7 +1749,12 @@ public class PDSLabel {
 				// Get object class
 				String name = element.valueString(true, false);
 				int n = name.lastIndexOf('_');
-				if(n != -1) name = name.substring(n+1);
+				if(n != -1) { // Check if a named class
+					String cname = name.substring(n+1);
+					if(igpp.util.Text.isInList(cname, className)) {
+						name = cname;
+					}
+				}
 				
 				ArrayList<HashMap<String, Object>> stack = object.get(name);
 				if(stack == null) {	// One does not exist - create it
