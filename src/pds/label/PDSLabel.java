@@ -175,6 +175,7 @@ public class PDSLabel {
 			}
 			if(buffer.compareTo("CCSD3ZF0000100") == 0) label = true;
 			if(buffer.compareTo("PDS_VERSION_ID") == 0) label = true;
+			file.close();
 		} catch(Exception e) {
 			System.out.println("Unable to open file: " + pathName);
 			System.out.println("    Reason: " + e.getMessage());
